@@ -1,0 +1,42 @@
+package controler;
+
+import model.Conta;
+import view.InterfaceGrafica;
+
+public class InterfaceControler {
+
+	public void controleDoMenu(int opcao) {
+		InterfaceGrafica interfaceGrafica = new InterfaceGrafica();
+		Conta conta = new Conta();
+		
+		while (true) {
+			switch (opcao) {
+			case 1:
+				interfaceGrafica.informacoesDeposito(conta);
+				break;
+			case 2:
+				interfaceGrafica.informacoesSaque(conta);
+				break;
+			case 3:
+				interfaceGrafica.mostrarSaldo(conta);
+				break;
+			case 4:
+				interfaceGrafica.mostrarDadosConta(conta);
+				break;
+			case 5:
+				interfaceGrafica.mostrarExtratoCompleto(conta);
+				break;
+			case 6:
+				interfaceGrafica.mostrarExtratoDesposito(conta);
+				break;
+			case 7:
+				interfaceGrafica.mostrarExtratoSaque(conta);
+				break;
+			case 8:
+				System.exit(0);
+			default:
+				break;
+			}
+		}
+	}
+}

@@ -1,0 +1,84 @@
+package model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Conta {
+	private String titularConta;
+	private int tipo;
+	private float saldo;
+
+	private List<Movimentacao> listaDeMovimentacoes = new ArrayList<Movimentacao>();
+	private List<Movimentacao> listaDeDepositos = new ArrayList<Movimentacao>();
+	private List<Movimentacao> listaDeSaques = new ArrayList<Movimentacao>();
+
+	public void depositar(float valorDepositado) {
+		setSaldo(valorDepositado);
+		Movimentacao movimentacao = new Movimentacao(2, valorDepositado);
+		Movimentacao movimentacaoDepositos = new Movimentacao(valorDepositado);
+		listaDeMovimentacoes.add(movimentacao);
+		listaDeDepositos.add(movimentacaoDepositos);
+
+	}
+
+	public void sacar(float valorSacado) {
+		setSaldo(-valorSacado);
+		Movimentacao movimentacao = new Movimentacao(1, valorSacado);
+		Movimentacao movimentacaoSaques = new Movimentacao(valorSacado);
+		listaDeMovimentacoes.add(movimentacao);
+		listaDeSaques.add(movimentacaoSaques);
+	}
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+
+	public int getTipo() {
+		return tipo;
+	}
+
+	public void setSaldo(float saldo) {
+		this.saldo = saldo + getSaldo();
+	}
+
+	public float getSaldo() {
+		return saldo;
+	}
+
+	public void setListaDeSaques(List<Movimentacao> listaDeSaques) {
+		this.listaDeSaques = listaDeSaques;
+	}
+
+	public List<Movimentacao> getListaDeSaques() {
+		return listaDeSaques;
+	}
+	
+	public void setListaDeMovimentacoes(List<Movimentacao> listaDeMovimentacoes) {
+		this.listaDeMovimentacoes = listaDeMovimentacoes;
+	}
+	
+	public void setListaDeDepositos(List<Movimentacao> listaDeDepositos) {
+		this.listaDeDepositos = listaDeDepositos;
+	}
+	
+
+	public List<Movimentacao> getListaDeMovimentacoes() {
+		return listaDeMovimentacoes;
+	}
+
+	public List<Movimentacao> getListaDeDepositos() {
+		return listaDeDepositos;
+	}
+
+	public List<Movimentacao> getListadeSaques() {
+		return listaDeSaques;
+	}
+
+	public void setTitularConta(String titularConta) {
+		this.titularConta = titularConta;
+	}
+
+	public String getTitularConta() {
+		return titularConta;
+	}
+}

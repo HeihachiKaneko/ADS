@@ -1,0 +1,14 @@
+package controler;
+
+import model.Conta;
+import view.InterfaceGrafica;
+
+public class Controle {
+	
+	InterfaceGrafica interfaceGrafica = new InterfaceGrafica();
+	Conta conta = new Conta();
+	
+	public void controleDoMenu(int opcao) {
+		
+	}
+}
