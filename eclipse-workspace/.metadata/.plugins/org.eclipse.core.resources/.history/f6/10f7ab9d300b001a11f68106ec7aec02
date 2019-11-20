@@ -1,0 +1,20 @@
+package produtos;
+
+public class Produto {
+	
+	
+	private String id;
+	private String nome;
+	private String descricao;
+	private float prico;
+	private int quantidade;
+	
+	public void registrarProduto(String id, float price, String description, String name) {
+        this.id = id;
+        this.price = price;
+        this.description = description;
+        this.name = name;
+        this.quantity = 0;
+    }
+	
+}

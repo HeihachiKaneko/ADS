@@ -1,0 +1,35 @@
+package interfaceGrafica;
+
+public class InterfaceGrafica {
+	while (true) {
+        int action = Integer.parseInt(JOptionPane.showInputDialog("1 - Cadastrar Produtos\n"
+                + "2 - Listar os Produtos\n" + "3 - Adicionar Produtos\n" + "4 - Vizualizar os cupons\n"
+                + "5 - Calcular o valor dos cupons\n" + "6 - Vender Produto\n" + "7 - Sair"));
+        switch (action) {
+        case 1:
+            registerProducts();
+            break;
+        case 2:
+            showProducts();
+            break;
+        case 3:
+            addProducts();
+            break;
+        case 4:
+            showCoupons();
+            break;
+        case 5:
+            calculateCoupons();
+            break;
+        case 6:
+            sellProducts();
+            break;
+        case 7:
+            System.exit(1);
+            break;
+        default:
+            JOptionPane.showMessageDialog(null, "Você informou uma opção invalida");
+            break;
+        }
+    }
+}
