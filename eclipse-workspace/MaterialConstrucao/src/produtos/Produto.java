@@ -16,11 +16,11 @@ public class Produto {
         this.quantidade = 0;
     }
 	
-	public void removeQuantity(int quantidade) {
+	public void removerQuantidade(int quantidade) {
         this.quantidade -= quantidade;
     }
 
-    public void addQuantity(int quantidade) {
+    public void addQuantidade(int quantidade) {
         this.quantidade += quantidade;
     }
 	
