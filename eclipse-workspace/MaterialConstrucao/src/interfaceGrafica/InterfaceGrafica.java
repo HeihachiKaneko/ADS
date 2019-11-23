@@ -50,7 +50,7 @@ public class InterfaceGrafica {
 	}
 
 	private void cadastrarProdutos() {
-		// codigo, desc, preco
+		
 		String nomeProduto = JOptionPane.showInputDialog("Informe o produto que deseja cadastrar: ");
 		String id = JOptionPane.showInputDialog("Informe o codigo do produto: ");
 		String descricao = JOptionPane.showInputDialog("Descricao do produto: ");
@@ -90,17 +90,6 @@ public class InterfaceGrafica {
 	}
 
 	private void adicionarProdutos() {
-		int cadastrarMais = Integer.parseInt(
-				JOptionPane.showInputDialog("Deseja cadastrar mais algum produto ?" + "\n" + "1- Sim, 2 - nao"));
-		while (cadastrarMais == 1 || cadastrarMais == 2) {
-			if (cadastrarMais == 1 || cadastrarMais == 2) {
-				cadastrarProdutos();
-			} else {
-				JOptionPane.showMessageDialog(null, "Esta opcao nao e vailida ", "Erro", JOptionPane.ERROR_MESSAGE);
-				cadastrarMais = Integer.parseInt(JOptionPane
-						.showInputDialog("Deseja cadastrar mais algum produto ?\" + \"\\n\" + \"1- Sim, 2 - nao"));
-			}
-		}
 		Produto produto = this.pedirProduto();
 		if (produto != null) {
 			int quantity = Integer
@@ -114,15 +103,55 @@ public class InterfaceGrafica {
 	}
 
 	private void mostrarCupons() {
-
+		if (this.cupom.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Não existem cupons cadastrados");
+        } else {
+            String mensagem = "";
+            int cont = 1;
+            for (Cupom cupom : this.cupom) {
+                mensagem += "Cupom: " + cont + "\n" + "Produto: " + cupom.getProduto() + " quantidade: "
+                        + cupom.getQuantidade() + " valor: " + cupom.getValor() + "\n";
+                cont++;
+            }
+            JOptionPane.showMessageDialog(null, mensagem);
+        }
 	}
 
 	private void calcularCupons() {
-
+		if (this.cupom.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Não existem cupons cadastrados");
+        } else {
+            float valor = 0f;
+            for (Cupom cupom : this.cupom) {
+                valor += cupom.getValor();
+            }
+            JOptionPane.showMessageDialog(null, "O valor total de cupons é: " + valor);
+        }
 	}
 
 	private void venderProdutos() {
-
+		Produto selecionarProduto = this.pedirProduto();
+        if (selecionarProduto != null) {
+            if (selecionarProduto.getQuantidade() > 0 ) {
+                int quantidade = Integer.parseInt(JOptionPane.showInputDialog("Produto encontrado, existem "
+                        + selecionarProduto.getQuantidade() + " no estoque, quantos quer vender ?"));
+                if (quantidade <= selecionarProduto.getQuantidade()) {
+                    Cupom cupom = new Cupom();
+                    cupom.setProduto(selecionarProduto.getNome());
+                    cupom.setValor(selecionarProduto.getPreco() * quantidade);
+                    cupom.setQuantidade(quantidade);
+                    this.cupom.add(cupom);
+                    selecionarProduto.removerQuantidade(quantidade);
+                    JOptionPane.showMessageDialog(null, "Produto vendido");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Você digitou uma quantidade que não temos em estoque");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "o estoque desse produto está vazio");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Você digitou um produto ou código inexistente");
+        }
 	}
 
 }

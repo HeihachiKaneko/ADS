@@ -2,6 +2,10 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="Main"/>
 <fullyQualifiedTypeName name="interfaceGrafica.InterfaceGrafica"/>
-<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="produtos.Produto"/>
+<fullyQualifiedTypeName name="produtos.Estoque"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="produtos.Cupom"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 </qualifiedTypeNameHistroy>
