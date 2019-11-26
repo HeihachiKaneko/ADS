@@ -1,0 +1,32 @@
+package produtos;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Estoque {
+
+	
+    private List<Produto> produtos = new ArrayList<Produto>();
+
+    /**
+     * @return the products
+     */
+    public List<Produto> getProduto() {
+        return produtos;
+    }
+
+    /**
+     * @param products the products to set
+     */
+    public void setProducts(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    public void addProduct(Produto produtos) {
+        this.produtos.add(produtos);
+    }
+
+    public void removeProduct(Product product) {
+        this.products.remove(product);
+    }
+}
