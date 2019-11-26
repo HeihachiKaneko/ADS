@@ -50,9 +50,19 @@ public class InterfaceGrafica {
 	}
 
 	private void cadastrarProdutos() {
-		
+		Produto produto = new Produto();
 		String nomeProduto = JOptionPane.showInputDialog("Informe o produto que deseja cadastrar: ");
 		String id = JOptionPane.showInputDialog("Informe o codigo do produto: ");
+		for (int i = 0; i < estoque.getProdutos().size(); i++) {
+			while(estoque.getProdutos().get(i).getId().equals(id)) {
+				JOptionPane.showMessageDialog(null, "Este produto ja foi adicionado!", "Erro",
+						JOptionPane.ERROR_MESSAGE);
+				id = JOptionPane.showInputDialog("Informe o codigo do produto: ");
+			}
+		}
+
+		
+		
 		String descricao = JOptionPane.showInputDialog("Descricao do produto: ");
 		float preco = Float.parseFloat(JOptionPane.showInputDialog("Informe o preco do produto: "));
 		while (preco < 1.00) {
@@ -60,7 +70,7 @@ public class InterfaceGrafica {
 					JOptionPane.ERROR_MESSAGE);
 			preco = Float.parseFloat(JOptionPane.showInputDialog("Informe o preco do produto: "));
 		}
-		Produto produto = new Produto();
+		
 		produto.registrarProduto(id, preco, descricao, nomeProduto);
 		estoque.addProduto(produto);
 	}
@@ -86,15 +96,25 @@ public class InterfaceGrafica {
 					+ produto.getDescricao() + "\n" + "\n";
 		}
 
+		
 		JOptionPane.showMessageDialog(null, produtos);
 	}
 
 	private void adicionarProdutos() {
 		Produto produto = this.pedirProduto();
 		if (produto != null) {
-			int quantity = Integer
+			int quantidade = Integer
 					.parseInt(JOptionPane.showInputDialog("Quantos produtos quer adicionar ao estoque ?"));
-			produto.addQuantidade(quantity);
+			produto.addQuantidade(quantidade);
+			
+			while (quantidade < 1) {
+				JOptionPane.showMessageDialog(null, "Nao e possivel adicionar quantidades negativas", "Erro",
+						JOptionPane.ERROR_MESSAGE);
+				quantidade = Integer
+						.parseInt(JOptionPane.showInputDialog("Quantos produtos quer adicionar ao estoque ?"));
+				produto.addQuantidade(quantidade);
+				JOptionPane.showMessageDialog(null, "O produto foi adicionado");
+			}
 			JOptionPane.showMessageDialog(null, "O produto foi adicionado");
 		} else {
 			JOptionPane.showMessageDialog(null, "Voce digitou um produto ou codigo inexistente");
